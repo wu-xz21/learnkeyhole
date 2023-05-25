@@ -108,6 +108,12 @@ class mainWindow:
         self.new_origin_dir.setDragMode(QGraphicsView.ScrollHandDrag)
         self.new_origin_dir.setRenderHint(QPainter.SmoothPixmapTransform)
         
+        
+#         范德萨范德萨富士达
+#         fadsASDFA
+#         DFAS
+#         AFDA
+        
 
 
         #打开文件夹预测图片显示重载
