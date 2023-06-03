@@ -1,27 +1,29 @@
-clc;clear;
-% 假设图像都存放在一个文件夹中，文件名为abd1587_s4_00001, abd1587_s4_00002, ...,abd1587_s4_00126
-% 创建一个空的cell数组来存放读取的数据
-data = cell(1,126);
-% 使用for循环来依次读取每张图像的数据
-for i = 1:126
-    % 使用dir函数来获取文件夹中的所有文件信息
-    files = dir('C:\Users\19877\Documents\Tencent Files\1987760449\FileRecv\University\MATLAB\png2\*png');
-    % 使用regexp函数来匹配文件名中的数字，并将结果转换为数值
-    num = str2double(regexp(files(i).name,'\d+','match'));
-    % 使用sprintf函数来生成图像的文件名，其中num(3)是文件名中的第三个数字
-    filename = fullfile('C:\Users\19877\Documents\Tencent Files\1987760449\FileRecv\University\MATLAB\png2',sprintf('abd1587_s1-%05d.png',num(3)));
-    % 使用imread函数来读取图像，并将结果存入data数组中
-    data{i} = imread(filename);
-    % 如果需要，可以在这里对data{i}进行其他操作，比如提取A、B、C、D四种数据
+clear;close;clc;
+% 输入文件路径
+Image_path=input("请输入图片路径：","s");
+while  ~exist(Image_path,'dir')
+        Image_path=input("请输入图片路径：","s");
 end
-% 读取二值图像
-
-% M数组用来存储匙孔的6个特征数据，126为文件夹中图片个数
-M=zeros(6,126);
+% 关于特征
+stats=["Area","Depth","metric",,"Aspect_ratio","Width_half_depth","pore_born"];%这里顺序需要更改一下啊
+P_type='*.png';
+Pictures=dir(strcat(Image_path,"\*.png"));
+lenPic=length(Pictures);
+M=zeros(length(stats),lenPic);
+% 创建一个空的cell数组来存放读取的数据
+data = cell(1,lenPic);
 % 像素宽度为1.9305微米，之后深度、半深宽等长度单位皆为微米
 pixel_width=1.9305;
 
-for j=1:126
+% 使用for循环来依次读取每张图像的数据
+for i = 1:lenPic
+    filename=strcat(Image_path,"\",Pictures(i).name);
+    data{i} = imread(filename);
+    % 如果需要，你可以在这里对data{i}进行其他操作，比如提取A、B、C、D四种数据
+end
+% 读取二值图像
+
+for j=1:lenPic
 img = data{j};
 % 提取白色图案的边界坐标
 [B,L] = bwboundaries(img,'noholes');
