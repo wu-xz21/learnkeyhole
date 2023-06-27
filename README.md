@@ -2,13 +2,14 @@
 ---
 
 ### 目录
-1. [仓库更新 Top News](#TopNews)
-2. [相关仓库 Related code](#相关仓库)
-3. [性能情况 Performance](#性能情况)
-4. [所需环境 Environment](#所需环境)
-5. [训练步骤 How2train](#训练步骤)
-6. [预测步骤 How2predict](#预测步骤)
-7. [评估步骤 miou](#评估步骤)
+1. [背景介绍 Background Introduction](#背景介绍)
+2. [所需环境 Environment](#所需环境)
+3. [库打包步骤 How to pip ](#库打包步骤)
+4. [训练步骤 How to train](#训练步骤)
+5. [预测步骤 How to predict](#预测步骤)
+6. [评估步骤 miou](#评估步骤)
+7. [图形窗口 graphic window](#图形窗口)
+8. [参考 Reference](#参考)
 
 
 ### 背景介绍
@@ -114,6 +115,6 @@ img/street.jpg
 ### 图形窗口
 运行__main__.py可得匙孔识别的图形窗口。
 
-## Reference
+## 参考
 https://github.com/ggyyzm/pytorch_segmentation  
 https://github.com/bonlime/keras-deeplab-v3-plus
