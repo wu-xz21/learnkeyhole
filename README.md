@@ -48,7 +48,8 @@ PyQt5==5.15.7
 ```
  
 ### 库打包步骤
-<a href = "http://t.csdn.cn/qcTpV" target = "_blank">参考**csdn博客**</a>
+<a  rel="noopener noreferrer" href = "http://t.csdn.cn/qcTpV" target = "_blank">参考**csdn博客**</a>
+
 文章里给出了详细的构建包和上传pypq官网的过程。
 
 
