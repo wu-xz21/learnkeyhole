@@ -46,31 +46,26 @@ h5py==3.8.0
 PyQt5==5.15.7
 ```
  
+### 库打包步骤
+参考**csdn**[博客](http://t.csdn.cn/qcTpV)
+文章里给出了详细的构建包和上传pypq官网的过程。
+
 
 ### 训练步骤
-#### 一、训练voc数据集
-1、将我提供的voc数据集放入VOCdevkit中（无需运行voc_annotation.py）。  
-2、运行train.py进行训练，默认参数已经对应voc数据集所需要的参数了。  
+#### 一、制作数据集
+1. 运行`cmd` ，激活虚拟环境，安装labelme库，执行命令`pip install labelme`
+2. 安装完成后，运行labelme，命令为`labelme`，将要识别的图片进行标注。
+  
 
 #### 二、训练自己的数据集
-1、本文使用VOC格式进行训练。  
-2、训练前将标签文件放在VOCdevkit文件夹下的VOC2007文件夹下的SegmentationClass中。    
-3、训练前将图片文件放在VOCdevkit文件夹下的VOC2007文件夹下的JPEGImages中。    
-4、在训练前利用voc_annotation.py文件生成对应的txt。    
-5、注意修改train.py的num_classes为分类个数+1。    
-6、运行train.py即可开始训练。  
+1. 本文使用VOC格式进行训练。
+2. 训练前将标签文件放在VOCdevkit文件夹下的VOC2007文件夹下的SegmentationClass中。
+3. 训练前将图片文件放在VOCdevkit文件夹下的VOC2007文件夹下的JPEGImages中。
+4. 在训练前利用voc_annotation.py文件生成对应的txt。
+5. 注意修改train.py的num_classes为分类个数+1。
+6. 运行train.py即可开始训练。 
 
-### 预测步骤
-#### 一、使用预训练权重
-##### a、VOC预训练权重
-1. 下载完库后解压，如果想要利用voc训练好的权重进行预测，在百度网盘或者release下载权值，放入model_data，运行即可预测。  
-```python
-img/street.jpg
-```    
-2. 在predict.py里面进行设置可以进行fps测试和video视频检测。    
-
-
-#### 二、使用自己训练的权重
+### 预测步骤 
 1. 按照训练步骤训练。    
 2. 在unet.py文件里面，在如下部分修改model_path、backbone和num_classes使其对应训练好的文件；**model_path对应logs文件夹下面的权值文件**。    
 ```python
@@ -84,7 +79,7 @@ _defaults = {
     #--------------------------------#
     #   所需要区分的类的个数+1
     #--------------------------------#
-    "num_classes"   : 21,
+    "num_classes"   : 2,#这里是匙孔+背景
     #--------------------------------#
     #   所使用的的主干网络：vgg、resnet50   
     #--------------------------------#
@@ -115,6 +110,9 @@ img/street.jpg
 1、设置get_miou.py里面的num_classes为预测的类的数量加1。  
 2、设置get_miou.py里面的name_classes为需要去区分的类别。  
 3、运行get_miou.py即可获得miou大小。  
+
+### 图形窗口
+运行__main__.py可得匙孔识别的图形窗口。
 
 ## Reference
 https://github.com/ggyyzm/pytorch_segmentation  
