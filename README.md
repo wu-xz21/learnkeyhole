@@ -10,6 +10,7 @@
 6. [评估步骤 miou](#评估步骤)
 7. [图形窗口 graphic window](#图形窗口)
 8. [参考 Reference](#参考)
+9. [文件介绍 Files Introduction](#文件介绍)
 
 
 ### 背景介绍
@@ -50,7 +51,7 @@ PyQt5==5.15.7
 ### 库打包步骤
 <a  rel="noopener noreferrer" href = "http://t.csdn.cn/qcTpV" target = "_blank">参考**csdn博客**</a>
 
-文章里给出了详细的构建包和上传pypq官网的过程。
+文章里给出了详细的构建包和上传pypq官网的过程，同时可以找到本模型pip包，可以下载使用。
 
 
 ### 训练步骤
@@ -119,3 +120,8 @@ img/street.jpg
 ## 参考
 https://github.com/ggyyzm/pytorch_segmentation  
 https://github.com/bonlime/keras-deeplab-v3-plus
+
+## 文件介绍
+1. Features extraction:  feature extraction和scatter contrast分别是提取keyhol形貌数据和画图的脚本文件，R2是计算拟合精度的函数，SVM是尝试分类学习的脚本文件。
+2. learnkeyhole:  这个文件夹具体放了模型的一些文件，包括提取，训练，预测的一些文件，具体使用步骤可参考博主Bubbling的文章（http://t.csdnimg.cn/8ZtNS），里面内容讲的很详细。
+3. Others：本仓库中的其他文件如setup.cfg,setup.py等是用来打包文件形成库文件的，便于上传pip包。
